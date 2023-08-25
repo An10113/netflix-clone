@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(405).end();
     }
 
-    await serverAuth(req, res);
+    await serverAuth(req);
 
     const { movieId } = req.query;
 
@@ -25,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         id: movieId
       }
     });
-
     return res.status(200).json(movies);
   } catch (error) {
     console.log(error);
